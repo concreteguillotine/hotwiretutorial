@@ -1,0 +1,14 @@
+<main class="container">
+    <div class="header">
+        <h1> Quotes </h1>
+        <%= link_to "New quote",
+                    new_quote_path,
+                    class: "btn btn--primary" %>
+    </div>
+
+    <div class="quote">
+        <%= render @quotes %>
+    </div>
+</main>
+
+
