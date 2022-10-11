@@ -13,9 +13,6 @@ RSpec.feature "Quotes" do
         end
 
         click_link "New quote"
-        within("h1") do
-            expect(page).to have_content("New quote")
-        end
 
         fill_in "Name", with: "Capybara quote"
         click_button "Create quote"
@@ -39,10 +36,7 @@ RSpec.feature "Quotes" do
         end
 
         click_link "Edit"
-        within("h1") do
-            expect(page).to have_content("Edit quote")
-        end
-
+    
         fill_in "Name", with: "Updated quote"
         click_button "Update quote"
 
