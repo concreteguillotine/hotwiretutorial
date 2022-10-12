@@ -2,8 +2,10 @@ require "rails_helper"
 
 RSpec.feature "Quotes" do
     quote = FactoryBot.create(:quote)
+    accountant = FactoryBot.create(:user)
 
     before do
+        login_as(accountant)
         visit quotes_path
     end
 
