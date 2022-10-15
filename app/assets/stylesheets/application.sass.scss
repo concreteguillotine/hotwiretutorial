@@ -4,8 +4,10 @@
 // Configuration
 @import "config/variables";
 @import "config/reset";
+@import "config/animations";
 
 // Components
+@import "components/flash";
 @import "components/btn";
 @import "components/error_message";
 @import "components/form";

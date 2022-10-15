@@ -19,7 +19,7 @@ class QuotesController < ApplicationController
             respond_to do |f|
                 # determines how to respond based on the format used for requests, turbo_stream responds with the associated view
                 f.html { redirect_to quotes_path, notice: "Quote was successfully created." }
-                f.turbo_stream
+                f.turbo_stream { flash.now[:notice] = "Quote was successfully created." }
             end
         else
             render :new, status: :unprocessable_entity
@@ -31,7 +31,11 @@ class QuotesController < ApplicationController
 
     def update
         if @quote.update(quote_params)
-            redirect_to quotes_path, notice: "Quote has successfully updated."
+            respond_to do |f|
+                # determines how to respond based on the format used for requests, turbo_stream responds with the associated view
+                f.html { redirect_to quotes_path, notice: "Quote was successfully updated." }
+                f.turbo_stream { flash.now[:notice] = "Quote was successfully updated." }
+            end
         else
             render :edit, status: :unprocessable_entity
         end
@@ -43,7 +47,7 @@ class QuotesController < ApplicationController
         # determines how to respond based on the format used for requests
         respond_to do |f|
             f.html { redirect_to quotes_path, notice: "Quote was successfully destroyed." }
-            f.turbo_stream
+            f.turbo_stream { flash.now[:notice] = "Quote was successfully destroyed." }
         end
     end
 
